@@ -11,13 +11,12 @@ local_settings.py
 db.sqlite3
 media
 
-<<<<<<< HEAD
 .idea/
 .idea
-=======
-.idea
-.idea/
->>>>>>> 2934ef2fe74ae7b9e2b47e93c21187c4eb9205a6
+..idea/
+..idea
+/.idea/
+/.idea
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
 # in your Git repository. Update and uncomment the following line accordingly.
