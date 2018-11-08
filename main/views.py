@@ -1,14 +1,17 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from .forms import questionForms
 from .models import question
 import sympy
 
-def wait_page(request):
+def index_page(request):
+
+    flag = 0
 
     if request.method == "POST":
 
         value = request.POST.get('value')
         variable = request.POST.get('variable')
+        diffequation = ''
 
         form = questionForms({'value': value, 'variable': variable})
 
@@ -17,20 +20,22 @@ def wait_page(request):
                 try:
                     diffequation = sympy.latex(sympy.diff(value, variable))
                 except:
-                    diffequation = 'Türev alınamadı.'
+                    flag = 1
             elif request.POST.get('action') == "İntegral al":
                 try:
-                    diffequation = sympy.latex(sympy.integrate(value, (x)))
+                    diffequation = sympy.latex(sympy.integrate(value, (variable,variable)))
                 except:
-                    diffequation = 'İntegral alınamadı.'
+                    flag = 2
         else:
-            diffequation = 'Denklemi girmediniz.'
+            flag = 3
 
         context = {
             'form': form,
             'value': value,
             'diff': diffequation,
+            'flag': flag,
         }
+
     else:
 
         form = questionForms({'value': '', 'variable': 'x'})
