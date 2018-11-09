@@ -53,7 +53,8 @@
                       </div>
                     </div>
                     <div id="valueH" style="display: none">
-                        <small id="valueHelp" class="form-text text-muted" style="font-size: 50%; padding-bottom: 2%">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias atque deleniti dolore excepturi fuga iste modi nemo nihil pariatur placeat qui, quis repudiandae soluta, sunt totam unde veritatis voluptatum?</small>
+                        <small id="valueHelp" class="form-text text-muted" style="font-size: 50%; padding-bottom: 2%">Denklemi ASCII formatında yazmanız gerekmektedir. Detaylı bilgiyi
+                            <a href="http://asciimath.org/" target="_blank">bu linkten</a> alabilirsiniz.</small>
                     </div>
                 </div>
                 <div class="col-sm-2">
@@ -64,7 +65,7 @@
                       </div>
                     </div>
                     <div id="variableH" style="display: none">
-                        <small id="variableHelp" class="form-text text-muted" style="font-size: 50%; padding-bottom: 2%">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi enim illum, neque nobis rerum soluta? Assumenda consequuntur, eaque exercitationem explicabo facilis fugiat impedit necessitatibus neque nobis possimus quae sunt veniam.</small>
+                        <small id="variableHelp" class="form-text text-muted" style="font-size: 50%; padding-bottom: 2%">İşlem yapılacak değişken.</small>
                     </div>
                 </div>
             </div>
@@ -73,30 +74,43 @@
 
             </form>
 
-        <div class="message" style="padding-top: 5%">
+            <div class="message" style="padding-top: 5%">
 
-            {% if flag == 0 and value %}
-                `{{ value }}`
-                <hr>
-                $${{ diff }}$$
-            {% elif flag == 1 %}
-                <div class="alert alert-danger" role="alert">
-                    Türev alınamadı
+                {% if flag == 0 and value %}
+                    `{{ value }}`
+                    <hr>
+                    $${{ diff }}$$
+                {% elif flag == 1 %}
+                    <div class="alert alert-danger" role="alert">
+                        Türev alınamadı
+                    </div>
+                {% elif flag == 2 %}
+                    <div class="alert alert-danger" role="alert">
+                        İntegral alınamadı
+                    </div>
+                {% elif flag == 3 %}
+                    <div class="alert alert-danger" role="alert">
+                        Denklemi ve değişkenleri tam girin.
+                    </div>
+                {% endif %}
+            </div>
+
+        <div class="footer" style="font-size: 50%">
+            <div class="row">
+                <div class="col">
+                    <div style="text-align: left; padding-top: 2%">source code is <a
+                        href="https://github.com/batuberksahin/diff-int" target="_blank">here</a>
+                    </div>
                 </div>
-            {% elif flag == 2 %}
-                <div class="alert alert-danger" role="alert">
-                    İntegral alınamadı
+                <div class="col">
+                    <div style="text-align: right; padding-top: 2%">made by Batu Berk<br><a
+                        href="https://github.com/batuberksahin" target="_blank">my github account</a>
+                    </div>
                 </div>
-            {% elif flag == 3 %}
-                <div class="alert alert-danger" role="alert">
-                    Denklemi ve değişkenleri tam girin.
-                </div>
-            {% endif %}
+            </div>
         </div>
 
     </div>
-
-    <div class="footer" style="font-size: 100%"><div style="text-align: right; padding-right: 20%; padding-top: 2%"><b>Batu Berk</b></div></div>
 
 </body>
 </html>
