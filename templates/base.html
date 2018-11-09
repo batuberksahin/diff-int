@@ -2,40 +2,101 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Türev-İntegral</title>
 
-    <script type="text/javascript" async
-      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
-    </script>
-</head>
-<body>
+    <script>
+        function myValue() {
+            var x = document.getElementById("valueH");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
 
-    <div class="container" style="text-align: center; font-size: 200%">
+        function myVariable() {
+            var x = document.getElementById("variableH");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+    </script>
+
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</head>
+
+    <body>
+
+    <div class="container" style="text-align: center; font-size: 200%; padding-top: 6%">
 
         <h1>Türev - İntegral Hesaplayıcı</h1>
 
             <form method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" name="action" value="Türev al"> <input type="submit" name="action" value="İntegral al">
+
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="input-group mb-3">
+                      <input type="text" name="value" value="{% if value %}{{ value }}{% else %}{% endif %}" class="form-control" placeholder="Denklem" aria-label="Denklemi Giriniz..">
+                      <div class="input-group-append">
+                        <button onclick="myValue()" id="toggleValue" class="btn btn-success" type="button">?</button>
+                      </div>
+                    </div>
+                    <div id="valueH" style="display: none">
+                        <small id="valueHelp" class="form-text text-muted" style="font-size: 50%; padding-bottom: 2%">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias atque deleniti dolore excepturi fuga iste modi nemo nihil pariatur placeat qui, quis repudiandae soluta, sunt totam unde veritatis voluptatum?</small>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="input-group mb-3">
+                      <input type="text" name="variable" value="{{ variable }}" class="form-control" placeholder="Değişken" aria-label="Degişkeni giriniz..">
+                      <div class="input-group-append">
+                        <button onclick="myVariable()" id="toggleVariable" class="btn btn-success" type="button">?</button>
+                      </div>
+                    </div>
+                    <div id="variableH" style="display: none">
+                        <small id="variableHelp" class="form-text text-muted" style="font-size: 50%; padding-bottom: 2%">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi enim illum, neque nobis rerum soluta? Assumenda consequuntur, eaque exercitationem explicabo facilis fugiat impedit necessitatibus neque nobis possimus quae sunt veniam.</small>
+                    </div>
+                </div>
+            </div>
+
+            <input type="submit" name="action" value="Türev al" class="btn btn-dark"> <input class="btn btn-dark" type="submit" name="action" value="İntegral al">
 
             </form>
 
-        {% if flag == 0 %}
-        $${{ value }}$$
-        <hr>
-        $${{ diff }}$$
-        {% elif flag == 1 %}
-        <h1>Türev alınamadı</h1>
-        {% elif flag == 2 %}
-        <h1>İntegral alınamadı</h1>
-        {% elif flag == 3 %}
-        <h1>Denklemi ve değişkenleri tam girin.</h1>
-        {% endif %}
+        <div class="message" style="padding-top: 5%">
+
+            {% if flag == 0 and value %}
+                `{{ value }}`
+                <hr>
+                $${{ diff }}$$
+            {% elif flag == 1 %}
+                <div class="alert alert-danger" role="alert">
+                    Türev alınamadı
+                </div>
+            {% elif flag == 2 %}
+                <div class="alert alert-danger" role="alert">
+                    İntegral alınamadı
+                </div>
+            {% elif flag == 3 %}
+                <div class="alert alert-danger" role="alert">
+                    Denklemi ve değişkenleri tam girin.
+                </div>
+            {% endif %}
+        </div>
 
     </div>
 
-    <div class="footer" style="font-size: 100%"><div style="text-align: right; padding-right: 20%; padding-top: 5%"><b>Batu Berk</b></div></div>
+    <div class="footer" style="font-size: 100%"><div style="text-align: right; padding-right: 20%; padding-top: 2%"><b>Batu Berk</b></div></div>
 
 </body>
 </html>
