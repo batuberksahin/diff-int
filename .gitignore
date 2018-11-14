@@ -48,4 +48,4 @@ venv
 .idea/diff-int.iml
 
 .idea/.
-.idea/
+.idea/*
