@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/diff-int.iml" filepath="$PROJECT_DIR$/.idea/diff-int.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../heron/.idea/heron.iml" filepath="$PROJECT_DIR$/../heron/.idea/heron.iml" />
     </modules>
   </component>
 </project>

@@ -43,3 +43,9 @@ docs/_build/
 db.sqlite3
 media
 venv
+.idea/modules.xml
+.idea/workspace.xml
+.idea/diff-int.iml
+
+.idea/.
+.idea/
