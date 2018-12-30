@@ -13,7 +13,7 @@ ASCII formatındaki denklemlerin türevini veya integralini almaya yarar.
 ***
 ## Görüntü:
 
-![alt_text](https://github.com/batuberksahin/diff-int/django/blob/master/templates/turevintegral.png?raw=true "lala")
+![alt_text](https://raw.githubusercontent.com/batuberksahin/diff-int/master/django/templates/turevintegral.png "lala")
 
 ***
 
