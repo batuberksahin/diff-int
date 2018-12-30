@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Türev-İntegral</title>
+
+    <script>
+        function myValue() {
+            var x = document.getElementById("valueH");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+
+        function myVariable() {
+            var x = document.getElementById("variableH");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+    </script>
+
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+    </script>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="shortcut icon" href="https://cdn3.iconfinder.com/data/icons/mini-icon-set-general-office/91/General_-_Office_20-512.png"/>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    </head>
+
+    <body>
+
+    <div class="container" style="text-align: center; font-size: 200%; padding-top: 3%">
+
+        <h1 style="padding-bottom: 3%">Türev - İntegral Hesaplayıcı</h1>
+
+            <form method="POST">
+
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="input-group mb-3">
+                      <input type="text" name="value" value="<% if(value){ %><%=value%><%}else{%><%}%>" class="form-control" placeholder="Denklem" aria-label="Denklemi Giriniz..">
+                      <div class="input-group-append">
+                        <button onclick="myValue()" id="toggleValue" class="btn btn-success" type="button">?</button>
+                      </div>
+                    </div>
+                    <div id="valueH" style="display: none">
+                        <small id="valueHelp" class="form-text text-muted" style="font-size: 50%; padding-bottom: 2%">Denklemi ASCII formatında yazmanız gerekmektedir. Detaylı bilgiyi
+                            <a href="http://asciimath.org/" target="_blank">bu linkten</a> alabilirsiniz.</small>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="input-group mb-3">
+                      <input type="text" name="variable" value="<%=variable%>" class="form-control" placeholder="Değişken" aria-label="Degişkeni giriniz..">
+                      <div class="input-group-append">
+                        <button onclick="myVariable()" id="toggleVariable" class="btn btn-success" type="button">?</button>
+                      </div>
+                    </div>
+                    <div id="variableH" style="display: none">
+                        <small id="variableHelp" class="form-text text-muted" style="font-size: 50%; padding-bottom: 2%">İşlem yapılacak değişken.</small>
+                    </div>
+                </div>
+            </div>
+
+            <input type="submit" name="formsubmit" value="Türev al" class="btn btn-dark"> <input class="btn btn-dark" type="submit" name="formsubmit" value="İntegral al">
+
+            </form>
+
+            <div class="message" style="padding-top: 5%">
+
+                <% if(!first){ %>
+                <% if(!noValue){ %>
+                    <% if(isOkay){ %>
+                `<%=value%>>`
+                <hr>
+                $$<%=equation%>>$$
+                    <% }else if(!isOkay && operation == 'Türev al'){ %>
+                <div class="alert alert-danger" role="alert">
+                    Türev alınamadı
+                </div>
+                    <% }else if(!isOkay && operation == 'İntegral al'){ %>
+                <div class="alert alert-danger" role="alert">
+                    İntegral alınamadı
+                </div>
+                    <% } %>
+                <% }else{ %>
+                <div class="alert alert-danger" role="alert">
+                    Denklemi ve değişkenleri tam girin.
+                </div>
+                <% } %>
+                <% } %>
+                    <!--
+                {% if flag == 0 and value %}
+                    `<%=value%>>`
+                    <hr>
+                    $$<%=equation%>>$$
+                {% elif flag == 1 %}
+                    <div class="alert alert-danger" role="alert">
+                        Türev alınamadı
+                    </div>
+                {% elif flag == 2 %}
+                    <div class="alert alert-danger" role="alert">
+                        İntegral alınamadı
+                    </div>
+                {% elif flag == 3 %}
+                    <div class="alert alert-danger" role="alert">
+                        Denklemi ve değişkenleri tam girin.
+                    </div>
+                {% endif %}-->
+            </div>
+
+        <div class="footer" style="font-size: 40%">
+            <div class="row">
+                <div class="col">
+                    <div style="text-align: left; padding-top: 2%"><a
+                        href="https://github.com/batuberksahin/diff-int" target="_blank">kaynak kodu</a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div style="text-align: right; padding-top: 2%">Batu Berk tarafından hazırlanmıştır<br><a
+                        href="https://github.com/batuberksahin" target="_blank">github hesabı</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
