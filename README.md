@@ -1,5 +1,5 @@
 # Türev-İntegral Hesaplayıcı
-Live [turevintegral.batuberk.com](turevintegral.batuberk.com)
+Live [turevintegral.batuberk.com](http://turevintegral.batuberk.com)
 
 ASCII formatındaki denklemlerin türevini veya integralini almaya yarar.
 
