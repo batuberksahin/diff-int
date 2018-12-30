@@ -7,7 +7,7 @@ ASCII formatındaki denklemlerin türevini veya integralini almaya yarar.
 
 ### Kullanılanlar:
 - Django/Nodejs
-- Sympy
+- Sympy/Mathjs
 - Bootstrap
 - MathJax
 
