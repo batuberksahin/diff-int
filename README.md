@@ -1,11 +1,12 @@
 # Türev-İntegral Hesaplayıcı
+turevintegral.batuberk.com
 
 ASCII formatındaki denklemlerin türevini veya integralini almaya yarar.
 
 ***
 
 ### Kullanılanlar:
-- Django
+- Django/Nodejs
 - Sympy
 - Bootstrap
 - MathJax
